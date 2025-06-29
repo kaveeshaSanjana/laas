@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToOne } from 'typeorm';
 import { StudentEntity } from './student.entity';
 import { ParentEntity } from './parent.entity';
+import { UserType } from '../enums/user-type.enum';
 
 @Entity('users')
 export class UserEntity {
@@ -22,8 +23,8 @@ export class UserEntity {
   @Column({ type: 'varchar', length: 20, nullable: true })
   phone?: string;
 
-  @Column({ name: 'user_type', type: 'varchar', length: 50, nullable: true })
-  userType?: string;
+  @Column({ name: 'user_type', type: 'enum', enum: UserType, nullable: true })
+  userType?: UserType;
 
   @Column({ type: 'varchar', length: 20, unique: true, nullable: true })
   nic?: string;
@@ -69,5 +70,5 @@ export class UserEntity {
 
 
   @OneToOne(() => ParentEntity, parent => parent.user)
-  parent: ParentEntity[];
+  parent: ParentEntity;
 }

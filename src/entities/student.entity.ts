@@ -3,9 +3,7 @@ import { ParentEntity } from './parent.entity';
 import { UserEntity } from './user.entity';
 
 @Entity('students')
-export class StudentEntity {
-  @PrimaryColumn({ name: 'user_id', type: 'bigint' })
-  userId: string;
+export class StudentEntity extends UserEntity {
 
   @Column({ name: 'father_id', type: 'bigint', nullable: true })
   fatherId?: string;
