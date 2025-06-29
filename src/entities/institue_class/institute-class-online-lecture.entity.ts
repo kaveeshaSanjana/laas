@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
-import { InstituteEntity } from '../institute.entity';
+import { InstituteEntity } from '../../modules/institute/entities/institute.entity';
 import { InstituteClassEntity } from '../institue/institute-class.entity';
-import { UserEntity } from '../user.entity';
+import { UserEntity } from '../../modules/user/entities/user.entity';
 
 @Entity('institute_class_lectures')
 export class InstituteClassOnlineLectureEntity {

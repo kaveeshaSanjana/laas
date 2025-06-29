@@ -1,5 +1,5 @@
 import { Entity, PrimaryColumn, Column, OneToOne, JoinColumn } from 'typeorm';
-import { UserEntity } from './user.entity';
+import { UserEntity } from '../modules/user/entities/user.entity';
 
 @Entity('parents')
 export class ParentEntity {
@@ -15,7 +15,7 @@ export class ParentEntity {
   @Column({ type: 'text', nullable: true })
   workplace?: string;
 
-  @OneToOne(() => UserEntity, user => user.parent)
+  @OneToOne(() => UserEntity)
   @JoinColumn({ name: 'user_id' })
   user: UserEntity;
 }

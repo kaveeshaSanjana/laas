@@ -5,6 +5,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UserEntity } from './entities/user.entity';
+import { InstituteModule } from './modules/institute/institute.module';
+import { UsersModule } from './modules/user/user.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -18,13 +20,17 @@ import { UserEntity } from './entities/user.entity';
         username: config.get('DB_USERNAME'),
         password: config.get('DB_PASSWORD'),
         database: config.get('DB_DATABASE'),
-        entities: [__dirname + '/entities/*.entity{.ts,.js}',__dirname + '/entities/*/*.entity{.ts,.js}'],
-        autoLoadEntities: true, // Automatically load entities
+        entities: [
+          __dirname + '/entities/*.entity{.ts,.js}',
+          __dirname + '/modules/institute/entities/*.entity{.ts,.js}'
+        ],
         synchronize: true, // Set to false in production!
       }),
     }),
     AuthModule,
-    TypeOrmModule.forFeature([UserEntity])
+    TypeOrmModule.forFeature([UserEntity]),
+    InstituteModule,
+    UsersModule
   ],
   controllers: [AppController],
   providers: [AppService],

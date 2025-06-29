@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, PrimaryColumn } from 'typeorm';
 import { UserEntity } from '../user.entity';
-import { InstituteEntity } from '../institute.entity';
+import { InstituteEntity } from '../../modules/institute/entities/institute.entity';
 
 export enum InstituteStudentStatus {
   PRESENT = 'present',

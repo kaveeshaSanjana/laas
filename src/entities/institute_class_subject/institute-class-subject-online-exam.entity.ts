@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
-import { InstituteEntity } from '../institute.entity';
+import { InstituteEntity } from '../../modules/institute/entities/institute.entity';
 import { InstituteClassEntity } from '../institue/institute-class.entity';
 import { InstituteClassSubjectEntity } from '../institue_class/institute-class-subject.entity';
 import { SubjectEntity } from '../subject.entity';

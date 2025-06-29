@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, CreateDateColumn } from 'typeorm';
 import { UserEntity } from '../user.entity';
-import { InstituteEntity } from '../institute.entity';
+import { InstituteEntity } from '../../modules/institute/entities/institute.entity';
 
 @Entity('institute_attendance')
 export class InstituteAttendanceEntity {

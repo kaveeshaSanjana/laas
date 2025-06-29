@@ -1,9 +1,11 @@
 import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, OneToOne } from 'typeorm';
 import { ParentEntity } from './parent.entity';
-import { UserEntity } from './user.entity';
+import { UserEntity } from '../modules/user/entities/user.entity';
 
 @Entity('students')
-export class StudentEntity extends UserEntity {
+export class StudentEntity {
+  @PrimaryColumn({ name: 'user_id', type: 'bigint' })
+  userId: string;
 
   @Column({ name: 'father_id', type: 'bigint', nullable: true })
   fatherId?: string;
@@ -26,7 +28,7 @@ export class StudentEntity extends UserEntity {
   @JoinColumn({ name: 'guardian_id', referencedColumnName: 'userId' })
   guardian?: ParentEntity;
 
-  @OneToOne(() => UserEntity, user => user.student)
+  @OneToOne(() => UserEntity)
   @JoinColumn({ name: 'user_id' })
   user: UserEntity;
 }

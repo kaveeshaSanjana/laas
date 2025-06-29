@@ -1,4 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { InstituteEntity } from 'src/modules/institute/entities/institute.entity';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { InstituteClassEntity } from '../institue/institute-class.entity';
+import { SubjectEntity } from '../subject.entity';
+import { UserEntity } from '../../modules/user/entities/user.entity';
 
 @Entity('institute_class_subject_lectures')
 export class InstituteClassSubjectLectureEntity {
@@ -46,4 +50,21 @@ export class InstituteClassSubjectLectureEntity {
 
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamp', nullable: true })
   updatedAt?: Date;
+
+  
+    @ManyToOne(() => InstituteEntity)
+      @JoinColumn({ name: 'institute_id' })
+      institute: InstituteEntity;
+  
+    @ManyToOne(() => InstituteClassEntity)
+    @JoinColumn({ name: 'class_id' })
+    class: InstituteClassEntity;
+  
+    @ManyToOne(() => SubjectEntity)
+    @JoinColumn({ name: 'subject_id' })
+    subject: SubjectEntity;
+  
+    @ManyToOne(() => UserEntity)
+    @JoinColumn({ name: 'teacher_id' })
+    teacher: UserEntity;
 }

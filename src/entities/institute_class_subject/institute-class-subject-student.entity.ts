@@ -1,9 +1,8 @@
 import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
-import { InstituteEntity } from '../institute.entity';
+import { InstituteEntity } from '../../modules/institute/entities/institute.entity';
 import { InstituteClassEntity } from '../institue/institute-class.entity';
 import { InstituteClassSubjectEntity } from '../institue_class/institute-class-subject.entity';
-import { UserEntity } from '../user.entity';
-
+import { UserEntity } from '../../modules/user/entities/user.entity';
 @Entity('institute_class_subject_students')
 export class InstituteClassSubjectStudentEntity {
   @PrimaryColumn({ name: 'institute_id', type: 'bigint' })
